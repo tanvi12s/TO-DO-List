@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <body>
+        <h1>To Do List</h1>
+        <form method="post" action="/list" >
+            <label for="Task">Task: </label>
+            <input type="text" name="task" id="task">
+            <br>
+            <br>
+            <label for="Time">Time: </label>
+            <input type="time" name="time" id="time" />
+            <input type="hidden" name="task_id" id="task_id" value="" />
+        </form>
+        <br>
+            <input type="button" id="add-task" value="Add Task +" />
+            <input type="button" id="reload" value="Reset" />
+        <br>
+        <hr>
+        <ul style="list-style-type:none">
+            <% for(let i = 0; i < tasks.length; i++) {%>
+                <li>|  <%= tasks[i].task %>  |  <%= tasks[i].time %>  | <input type="button" class="edit-task" data-task="<%=tasks[i].task%>" data-time="<%=tasks[i].time%>"  data-val="<%=tasks[i]._id%>" value="Edit">  |  <input type="button" class="del-task" data-val="<%= tasks[i]._id %>" value="X"> </li>
+            <% } %>
+        </ul>
+        <script src="/main.js"></script>
+    </body>
+</head>
+</html>
